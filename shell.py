@@ -84,6 +84,9 @@ def shell (client, DBlocation):
             client.ping()
         except:
             keepConnected(client)
-        l = evaluate(inp, client, l, DBlocation)
+        if l:
+            l = evaluate(inp, client, l, DBlocation)
+        else:
+            util.current_status (client)
 
 
