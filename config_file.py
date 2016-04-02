@@ -1,21 +1,15 @@
-import configparser
-from os.path import expanduser
+import os
 
 def parse_file ():
-    config = configparser.ConfigParser()
-    confFile = expanduser ("~") + '/.kpd.conf'
-    try:
-        config.readfp (open (confFile))
-    except:
-        print ('Create a config file kpd.conf')
+    confFile = os.path.expanduser ("~") + '/.kpd.conf'
+    if os.path.isfile (confFile):
+        with open (confFile, 'r') as fp:
+            dbLocation = fp.readline ().rstrip ('\n')
+    else:
+        print ('a config file is needed...\nInput mpd database location: ')
+        dbLocation = input ()
+        with open (confFile, 'w') as fp:
+            fp.write (dbLocation)
         exit (1)
 
-    values = config.items ('main')
-    for tupl in values:
-        if 'database' in tupl:
-            dbLocation = tupl[1]
-        elif 'use_compression' in tupl:
-            compressionBool = tupl[1]
-
-    yield dbLocation
-    yield compressionBool
+    return dbLocation

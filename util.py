@@ -149,6 +149,7 @@ def mpdsearch (searchItem, argv, DBlocation, argFilter):
         print(entry)
     return res
 
+
 def shuffle (client):
     client.shuffle ()
 

@@ -71,9 +71,7 @@ if __name__ == '__main__':
     status = client.status ()
 
     ## config file
-    DBlocation, gzipBool = config_file.parse_file ()
-    DBlocation = DBlocation.split ('\'')[1]
-    #print ('letto dal file:', gzipBool, dbLocation)
+    DBlocation = config_file.parse_file ()
     ##end config_file
 
     #pipe from shell
