@@ -38,7 +38,10 @@ def convert_time (inTime):
     inTime = int (inTime)
     l = str (round (inTime / 60 - 0.5))
     l = l + ':'
-    l = l + str (inTime % 60)
+    sec = str (inTime % 60)
+    if len (sec) < 2:
+        sec = '0' + sec
+    l = l + sec
     if len (l) < 4:
         l = l + '0'
     return l
